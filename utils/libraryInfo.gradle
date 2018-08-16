@@ -1,6 +1,6 @@
 ext {
     bintrayRepo = 'maven'//name of Repo on https://bintray.com/nickunuchek
-    bintrayName = 'FlycoTabLayout_Lib'//name of project on https://bintray.com/nickunuchek/maven
+    bintrayName = 'BaseUtils'//name of project on https://bintray.com/nickunuchek/maven
 
     publishedGroupId = 'com.github.kolyall'//only this
     artifact = 'utils'//should be the same as module name

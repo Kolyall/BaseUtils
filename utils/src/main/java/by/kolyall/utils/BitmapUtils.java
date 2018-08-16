@@ -169,10 +169,6 @@ public class BitmapUtils {
         return bitmap;
     }
 
-    /**
-     * Get the number of bytes that would be used to store a bitmap with the size, in pixels, and
-     * {@link Bitmap.Config#ARGB_8888 ARGB_8888} (recommended) storage config.
-     */
     public static int getByteCount(int width, int height) {
         return getByteCount(width, height, ARGB_8888);
     }

@@ -11,7 +11,6 @@ if (project.hasProperty("android")) { // Android libraries
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
         // all the dependencies classpaths
         classpath += configurations.compile
-
         classpath += files("build/generated/source/r/release")
         classpath += files("build/generated/source/buildConfig/release")
 
