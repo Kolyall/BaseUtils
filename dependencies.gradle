@@ -1,0 +1,33 @@
+ext {
+    //Android
+    androidBuildToolsVersion = "27.0.3"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 28
+    androidRenderscriptTargetApi = 23
+
+    //Libraries
+    daggerVersion = '2.15'
+    butterKnifeVersion = '8.8.1'
+    supportLibVer = '28.0.0-alpha3'
+    googleLibVer = '15.0.1'
+    firebaseLibVer = '15.0.2'
+
+    rxJavaVersion = '1.3.0'
+    rxAndroidVersion = '1.2.1'
+    rxExtrasVersion = '0.8.0.6'
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+    retrofitVersion = '2.1.0'
+    phraseVersion = '1.1.0'
+    okHttpVersion = '3.9.1'
+    androidAnnotationsVersion = supportLibVer
+    //Views
+    //Data
+    lombokVersion = '1.16.20'
+    parcelerVersion = '1.1.9'
+    fragmentargsVersion = '3.0.2'
+    activitystarterVersion = '1.11-beta'
+    picassoVersion = '2.5.2'
+    gsonVersion = '2.8.1'
+}

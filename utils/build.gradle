@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply from: 'appVersion.gradle'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+
+        versionCode appVersionCode
+        versionName appVersionName
+
+        renderscriptTargetApi rootProject.ext.androidTargetSdkVersion
+        renderscriptSupportModeEnabled true
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'           //Some libraries have issues with this.
+        disable 'OldTargetApi'             //Lint gives this warning but SDK 20 would be Android L Beta.
+        disable 'IconDensities'            //For testing purpose. This is safe to remove.
+        disable 'IconMissingDensityFolder' //For testing purpose. This is safe to remove.
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVer}"
+    implementation "com.android.support:design:${rootProject.ext.supportLibVer}"
+
+    api  "io.reactivex:rxjava:${rootProject.ext.rxJavaVersion}"
+    api ("io.reactivex:rxandroid:${rootProject.ext.rxAndroidVersion}"){
+        exclude group: 'io.reactivex', module: 'rxjava'
+    }
+    api ("com.github.davidmoten:rxjava-extras:${rootProject.ext.rxExtrasVersion}"){
+        exclude group: 'io.reactivex', module: 'rxjava'
+    }
+
+    compileOnly         "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+
+    implementation      "javax.annotation:jsr250-api:${rootProject.ext.javaxAnnotationVersion}"
+
+    api 'net.danlew:android.joda:2.8.2'
+}
+
+// Place it at the end of the file
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+    }
+}
+
+apply from: 'libraryInfo.gradle'
+apply from: 'artifactsSetup.gradle'
+apply from: 'installSetup.gradle'
+apply from: 'bintraySetup.gradle'
+apply from: 'mavenCustom.gradle'

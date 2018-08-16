@@ -1,0 +1,72 @@
+if (project.hasProperty("android")) { // Android libraries
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    task javadoc(type: Javadoc) {
+        // all the sources of the current module
+        source = android.sourceSets.main.java.srcDirs
+        // the Android SDK classpath
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        // all the dependencies classpaths
+        classpath += configurations.compile
+
+        classpath += files("build/generated/source/r/release")
+        classpath += files("build/generated/source/buildConfig/release")
+
+        android.libraryVariants.all { variant ->
+            if (variant.name == 'release') {
+                owner.classpath += variant.javaCompile.classpath
+            }
+        }
+
+        // Honestly I do not remember why it's a good idea to exclude these
+        exclude '**/R.html', '**/R.*.html', '**/index.html', '**/R$*.class', '**/R.java', '**/BuildConfig.java', '**/R.class', '**/BuildConfig.class'
+
+        options {
+            encoding "utf-8"
+            // Java reference
+            links "http://docs.oracle.com/javase/7/docs/api/"
+            links("http://docs.oracle.com/javase/8/docs/api/");
+
+            // dependencies API references (I should probably move these in the project or something)
+            links("http://reactivex.io/RxJava/javadoc/");
+            links("https://google.github.io/gson/apidocs/");
+
+            // Android reference is not standard javadoc so I need to use offline directory
+            linksOffline("http://d.android.com/reference/", "${android.sdkDirectory}/docs/reference")
+
+            // Java 8 javadoc is more strict, This disable that strictness
+            if (JavaVersion.current().isJava8Compatible()) {
+                addStringOption('Xdoclint:none', '-quiet')
+                addStringOption('Xwerror', '-quiet')
+            }
+
+            addStringOption('encoding', 'UTF-8')
+            addStringOption('charSet', 'UTF-8')
+        }
+    }
+} else { // Java libraries
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+//added because of gradlew install is fall with error: cannot find symbol  annotations
+afterEvaluate {
+    javadoc.classpath += files(android.libraryVariants.collect { variant ->
+        variant.javaCompiler.classpath.files
+    })
+}
