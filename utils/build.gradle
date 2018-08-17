@@ -2,18 +2,18 @@ apply plugin: 'com.android.library'
 apply from: 'appVersion.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.androidCompileSdkVersion
-    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.androidMinSdkVersion
-        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
 
         versionCode appVersionCode
         versionName appVersionName
 
-        renderscriptTargetApi rootProject.ext.androidTargetSdkVersion
-        renderscriptSupportModeEnabled true
+//        renderscriptTargetApi androidTargetSdkVersion
+//        renderscriptSupportModeEnabled true
     }
 
     lintOptions {
@@ -43,21 +43,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVer}"
-    implementation "com.android.support:design:${rootProject.ext.supportLibVer}"
+    implementation "com.android.support:appcompat-v7:${supportLibVer}"
+    implementation "com.android.support:design:${supportLibVer}"
 
-    api  "io.reactivex:rxjava:${rootProject.ext.rxJavaVersion}"
-    api ("io.reactivex:rxandroid:${rootProject.ext.rxAndroidVersion}"){
+    api  "io.reactivex:rxjava:${rxJavaVersion}"
+    api ("io.reactivex:rxandroid:${rxAndroidVersion}"){
         exclude group: 'io.reactivex', module: 'rxjava'
     }
-    api ("com.github.davidmoten:rxjava-extras:${rootProject.ext.rxExtrasVersion}"){
+    api ("com.github.davidmoten:rxjava-extras:${rxExtrasVersion}"){
         exclude group: 'io.reactivex', module: 'rxjava'
     }
 
-    compileOnly         "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${rootProject.ext.lombokVersion}"
+    compileOnly         "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-    implementation      "javax.annotation:jsr250-api:${rootProject.ext.javaxAnnotationVersion}"
+    implementation      "javax.annotation:jsr250-api:${javaxAnnotationVersion}"
 
     api 'net.danlew:android.joda:2.8.2'
 }
