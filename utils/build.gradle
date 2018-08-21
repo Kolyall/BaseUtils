@@ -46,11 +46,8 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${supportLibVer}"
     implementation "com.android.support:design:${supportLibVer}"
 
-    api  "io.reactivex:rxjava:${rxJavaVersion}"
-    api ("io.reactivex:rxandroid:${rxAndroidVersion}"){
-        exclude group: 'io.reactivex', module: 'rxjava'
-    }
-    api ("com.github.davidmoten:rxjava-extras:${rxExtrasVersion}"){
+    implementation  "io.reactivex:rxjava:${rxJavaVersion}"
+    implementation ("io.reactivex:rxandroid:${rxAndroidVersion}"){
         exclude group: 'io.reactivex', module: 'rxjava'
     }
 
