@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ListUtils {
     public static <T> boolean isEmpty(@Nullable List<T> list) {
@@ -24,5 +25,12 @@ public class ListUtils {
         similar.retainAll(second);
         different.removeAll(similar);
         return different.size() == 0;
+    }
+
+    public static <T> boolean listEqualsNoOrder(List<T> l1, List<T> l2) {
+        final Set<T> s1 = new HashSet<>(l1);
+        final Set<T> s2 = new HashSet<>(l2);
+
+        return s1.equals(s2);
     }
 }
