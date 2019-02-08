@@ -11,17 +11,25 @@ if (project.hasProperty("android")) { // Android libraries
         classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
         // all the dependencies classpaths
         classpath += configurations.compile
+
         classpath += files("build/generated/source/r/release")
         classpath += files("build/generated/source/buildConfig/release")
 
         android.libraryVariants.all { variant ->
             if (variant.name == 'release') {
-                owner.classpath += variant.javaCompile.classpath
+                JavaCompile javaCompile
+                if (variant.hasProperty('javaCompileProvider')) {
+                    // Android 3.3.0+
+                    javaCompile = variant.javaCompileProvider.get()
+                } else {
+                    javaCompile = variant.javaCompile
+                }
+                owner.classpath += javaCompile.classpath
             }
         }
 
         // Honestly I do not remember why it's a good idea to exclude these
-        exclude '**/R.html', '**/R.*.html', '**/index.html', '**/R$*.class', '**/R.java', '**/BuildConfig.java', '**/R.class', '**/BuildConfig.class'
+        exclude '**/*.kt', '**/R.html', '**/R.*.html', '**/index.html', '**/R$*.class', '**/R.java', '**/BuildConfig.java', '**/R.class', '**/BuildConfig.class'
 
         options {
             encoding "utf-8"
@@ -66,6 +74,13 @@ artifacts {
 //added because of gradlew install is fall with error: cannot find symbol  annotations
 afterEvaluate {
     javadoc.classpath += files(android.libraryVariants.collect { variant ->
-        variant.javaCompiler.classpath.files
+        JavaCompile javaCompile
+        if (variant.hasProperty('javaCompileProvider')) {
+            // Android 3.3.0+
+            javaCompile = variant.javaCompileProvider.get()
+        } else {
+            javaCompile = variant.javaCompile
+        }
+        javaCompile.classpath.files
     })
 }

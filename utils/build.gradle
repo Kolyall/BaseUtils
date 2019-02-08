@@ -72,7 +72,8 @@ buildscript {
 }
 
 apply from: 'libraryInfo.gradle'
+//apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/artifactsSetup.gradle'
 apply from: 'artifactsSetup.gradle'
-apply from: 'installSetup.gradle'
-apply from: 'bintraySetup.gradle'
+apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/installSetup.gradle'
+apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/bintraySetup.gradle'
 apply from: 'mavenCustom.gradle'

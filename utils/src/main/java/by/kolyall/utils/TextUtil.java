@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.support.annotation.ArrayRes;
+import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.PluralsRes;
 import android.support.annotation.StringRes;
@@ -138,6 +139,18 @@ public class TextUtil {
     public static SpannableString createColoredText(Context context, SpannableString text, @ColorRes int colorId) {
         SpannableString spannableString = new SpannableString(text);
         spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, colorId)), 0, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableString;
+    }
+
+    public static SpannableString createColoredText(Resources resources, SpannableString text, @ColorRes int colorId) {
+        SpannableString spannableString = new SpannableString(text);
+        spannableString.setSpan(new ForegroundColorSpan(resources.getColor(colorId)), 0, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableString;
+    }
+
+    public static SpannableString createColoredText(SpannableString text, @ColorInt int color) {
+        SpannableString spannableString = new SpannableString(text);
+        spannableString.setSpan(new ForegroundColorSpan(color), 0, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableString;
     }
 

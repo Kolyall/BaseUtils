@@ -8,7 +8,7 @@ publishing {
             artifactId artifactLocal
             version libraryVersion
 
-            artifact bundleRelease
+            artifact bundleReleaseAar
             artifact sourcesJar
             artifact javadocJar
 
