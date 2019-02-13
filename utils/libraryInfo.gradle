@@ -6,6 +6,8 @@ ext {
     artifact = 'utils'//should be the same as module name
     artifactLocal = 'utils'//should be the same as module name
     libraryVersion = appVersionName
+    group = publishedGroupId
+    version = appVersionName
 
     libraryName = 'utils'
 
