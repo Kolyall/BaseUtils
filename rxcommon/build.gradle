@@ -1,0 +1,30 @@
+apply plugin: 'java-library'
+apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/appVersion.gradle'
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "io.reactivex:rxjava:${rxJavaVersion}"
+}
+
+// Place it at the end of the file
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+    }
+}
+
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/libraryInfo.gradle'
+    apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/artifactsSetup.gradle'
+    apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/installSetup.gradle'
+    apply from: 'https://raw.githubusercontent.com/Kolyall/MavenPublish/master/bintraySetup.gradle'
+}
