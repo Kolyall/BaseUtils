@@ -16,7 +16,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
-import android.support.annotation.DrawableRes;
 import android.view.View;
 
 import java.io.File;
@@ -26,6 +25,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import androidx.annotation.DrawableRes;
 
 
 public class ImageUtil {

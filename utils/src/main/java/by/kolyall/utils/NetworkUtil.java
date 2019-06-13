@@ -16,7 +16,8 @@
 
 package by.kolyall.utils;
 
-import rx.Observable;
+
+import io.reactivex.Observable;
 
 /**
  * Generic reusable network methods.

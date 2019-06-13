@@ -1,11 +1,11 @@
 package by.kolyall.utils;
 
-import android.support.annotation.Nullable;
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.annotation.Nullable;
 
 public class ListUtils {
     public static <T> boolean isEmpty(@Nullable List<T> list) {

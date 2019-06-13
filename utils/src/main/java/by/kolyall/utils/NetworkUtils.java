@@ -23,7 +23,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 import static android.net.ConnectivityManager.TYPE_WIFI;
 
@@ -62,7 +62,7 @@ public class NetworkUtils implements NetworkUtil {
     public Observable<Boolean> isInternetConnectedObservable(){
         return Observable.unsafeCreate(subscriber -> {
             subscriber.onNext(isInternetConnected());
-            subscriber.onCompleted();
+            subscriber.onComplete();
         });
     }
 

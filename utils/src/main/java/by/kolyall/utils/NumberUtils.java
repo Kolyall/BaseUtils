@@ -1,9 +1,9 @@
 package by.kolyall.utils;
 
-import android.support.annotation.Nullable;
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Nick Unuchek (skype: kolyall) on 25.03.2017.

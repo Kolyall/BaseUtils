@@ -7,12 +7,13 @@ package by.kolyall.utils;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 /**
  * Tint the cursor and select handles of an {@link EditText} programmatically.

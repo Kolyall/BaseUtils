@@ -1,8 +1,10 @@
 package by.kolyall.utils;
 
-import android.support.annotation.StringRes;
-import android.support.design.widget.TextInputLayout;
 import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputLayout;
+
+import androidx.annotation.StringRes;
 
 /**
  * Created by Nick Unuchek on 30.08.2017.

@@ -1,6 +1,6 @@
 package by.kolyall.utils.imagepicker;
 
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 /**
  * Created by Nick Unuchek on 26.09.2017.

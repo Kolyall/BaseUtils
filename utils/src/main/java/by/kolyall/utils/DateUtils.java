@@ -1,7 +1,5 @@
 package by.kolyall.utils;
 
-import android.support.annotation.Nullable;
-
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 
@@ -10,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by User on 20.04.2017.

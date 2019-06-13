@@ -25,8 +25,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.RequiresApi;
 import by.kolyall.utils.R;
-import lombok.AllArgsConstructor;
 
 /**
  * Created by Nick Unuchek on 11.08.2017.
@@ -119,6 +119,7 @@ public class PickImageUtils {
         return isCamera ? getCaptureImageOutputUri(context) : data.getData();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static boolean isUriRequiresPermissions(Context context, Uri uri) {
         try {
             ContentResolver resolver = context.getContentResolver();
@@ -134,7 +135,6 @@ public class PickImageUtils {
         return false;
     }
 
-    @AllArgsConstructor
     public enum ImageSourceType{
         Camera,
         Gallery,

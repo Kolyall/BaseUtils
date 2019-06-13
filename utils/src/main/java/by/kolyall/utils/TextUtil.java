@@ -5,12 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
-import android.support.annotation.ArrayRes;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.PluralsRes;
-import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -24,6 +18,12 @@ import android.text.style.SuperscriptSpan;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import androidx.annotation.ArrayRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.PluralsRes;
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
 import by.kolyall.utils.spanable.AssetsTypefaceSpan;
 
 
