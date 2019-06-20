@@ -17,12 +17,12 @@
 package by.kolyall.utils;
 
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 
 /**
  * Generic reusable network methods.
  */
 public interface NetworkUtil {
     boolean isInternetConnected();
-    Observable<Boolean> isInternetConnectedObservable();
+    Maybe<Boolean> isInternetConnectedObservable();
 }

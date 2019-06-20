@@ -23,7 +23,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 
 import static android.net.ConnectivityManager.TYPE_WIFI;
 
@@ -59,9 +59,12 @@ public class NetworkUtils implements NetworkUtil {
     }
 
     @Override
-    public Observable<Boolean> isInternetConnectedObservable(){
-        return Observable.unsafeCreate(subscriber -> {
-            subscriber.onNext(isInternetConnected());
+    public Maybe<Boolean> isInternetConnectedObservable(){
+        return Maybe.create(subscriber -> {
+            if (subscriber.isDisposed()) {
+                return;
+            }
+            subscriber.onSuccess(isInternetConnected());
             subscriber.onComplete();
         });
     }
